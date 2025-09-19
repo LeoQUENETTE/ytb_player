@@ -1,8 +1,8 @@
 import os, uvicorn
 
 from pydantic import BaseModel
-from bdd_communication import SupabaseDB
-from download import search_video, download_audio
+from app.bdd_communication import SupabaseDB
+from app.download import search_video, download_audio
 from fastapi import FastAPI, Depends, HTTPException
         
         
