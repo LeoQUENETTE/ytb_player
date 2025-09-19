@@ -24,7 +24,7 @@ def root():
 @app.get("/auth")
 def auth(email, password):
     supabase = SupabaseDB()
-    success, access_token, refresh_token = supabase.auth(email,password)
+    success, access_token, refresh_token = supabase.auth_password(email,password)
     if (success and access_token is not None and refresh_token is not None):
         return{"Authentification" : "Success", "AcessToken" : access_token, "RefreshToken" : refresh_token}   
     return{"Authentification", "Failure"}
