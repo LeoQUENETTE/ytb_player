@@ -1,4 +1,4 @@
-import json, secrets, os
+import os, uvicorn
 
 from pydantic import BaseModel
 from bdd_communication import SupabaseDB
@@ -71,3 +71,6 @@ def addAudio(payload: AudioPayload):
         return res
     else:
         return {"error" : res}
+
+if __name__ == "__main__":
+    uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=False)
