@@ -4,5 +4,3 @@ pydantic
 supabase
 requests
 yt_dlp
-json
-os

@@ -6,8 +6,10 @@ services:
     startCommand: "uvicorn app.main:app --host 0.0.0.0 --port 8000"
     plan: free
     envVars:
+      - key: API-Key
+        sync: false
       - key: SUPABASE_KEY
-        sync: false   # safer, so you fill it in dashboard
+        sync: false 
       - key: SUPABASE_URL
         sync: false
       - key: USER_EMAIL

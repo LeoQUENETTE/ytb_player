@@ -1,3 +1,4 @@
+import os
 import yt_dlp, json, requests
 
 ytb_API_URL = "https://www.googleapis.com/youtube/v3/"
@@ -28,9 +29,7 @@ def search_video(query : str):
     The function takes a search input as a string as input
     Returns a list of string corresponding to the url and title
     '''
-    f = open('secrets.json')
-    secrets = json.load(f)
-    api_key = secrets["API-Key"]
+    api_key = os.getenv("API_KEY")
     part = "snippet"
     type="video"
     request_text = f'{ytb_API_URL}search?key={api_key}&part={part}&type={type}&q={query}'
@@ -56,9 +55,7 @@ def info_video(audio_id : str):
     '''
     
     '''
-    f = open('secrets.json')
-    secrets = json.load(f)
-    api_key = secrets["API-Key"]
+    api_key = os.getenv("API_KEY")
     part = "snippet,contentDetails,statistics"
     request_text = f'{ytb_API_URL}videos?key={api_key}&part={part}&id={audio_id}'
     response = requests.get(request_text)
