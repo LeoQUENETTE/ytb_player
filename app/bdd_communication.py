@@ -3,8 +3,6 @@ from supabase import create_client, Client
 
 supabase_key = os.getenv("SUPABASE_KEY")
 supabase_url = os.getenv("SUPABASE_URL")
-auth_email = os.getenv("USER_EMAIL")
-auth_pswrd = os.getenv("USER_PSWRD")
 
 class SupabaseDB:
     def __init__(self):
