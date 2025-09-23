@@ -16,6 +16,10 @@ class AudioPayload(BaseModel):
     channel_name: str
     url: str
     duration: str
+    
+@app.head("/")
+def uptime_robot():
+    return{"Success" : "200"}
 
 @app.get("/")
 def root():
