@@ -39,7 +39,7 @@ class SupabaseDB:
     def auth_password(self, email, pswrd):
         try:
             if self.check_auth():
-                return True
+                return True, None, None
                 
             # Create client if needed
             if self.supabase is None:
@@ -54,7 +54,7 @@ class SupabaseDB:
             if res and res.session:
                 return True, res.session.access_token, res.session.refresh_token
             else:
-                return False
+                return False, None, None
                 
         except Exception as e:
             print(f"Sign-in failed: {e}")
