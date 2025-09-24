@@ -25,6 +25,14 @@ def uptime_robot():
 def root():
     return{"messages", "TEST EN COURS"}
 
+@app.get("/audio/stream/{audio_id}")
+async def get_signed_url(audio_id: str):
+    res = supabase.storage.from_("audio").create_signed_url(audio_id, 60)  # valid for 60s
+    if not res:
+        raise HTTPException(status_code=404, detail="Music not found")
+    return {"url": res["signedURL"]}
+    
+
 @app.get("/auth")
 def auth(email, password):
     supabase = SupabaseDB()
